@@ -109,7 +109,7 @@ $.getJSON('/warehouse/anomalies/initial/perspective/perspective.json', function 
             id: 'asymptote',
             width: 125,
             header: {
-                format: '<b>FLAT LINES</b><br>($\ge$ 4 points)'
+                format: '<b><abbr title="A distinct flat line is 4 or more consecutive & equal river level values.  Each field value denotes the number of time points that the flat lines of a gauge series span.">FLAT LINES</abbr></b><br>'
             },
             sorting: {
                 enabled: true,

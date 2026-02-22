@@ -128,7 +128,7 @@ $.getJSON('/warehouse/anomalies/initial/perspective/perspective.json', function 
             id: 'missing',
             width: 125,
             header: {
-                format: '<b>MISSING</b>'
+                format: '<b><abbr title="If measurement is not recorded at a time point, we have a missing value.  Each field value denotes the number missing measurements per gauge series, and relative to the starting time point.">MISSING<br></abbr></b><br>'
             },
             sorting: {
                 enabled: false

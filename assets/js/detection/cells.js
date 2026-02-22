@@ -137,16 +137,16 @@ $.getJSON('/warehouse/anomalies/initial/perspective/perspective.json', function 
             id: 'p_anomaly',
             width: 125,
             header: {
-                format: '<b><abbr title="Plausible Anomalies">Plausible<br>Anomalies</abbr></b>'
+                format: '<b><abbr title="Due to the difference between the expected value, vis-à-vis model, and the real value; missing value points are skipped.">Plausible<br>Anomalies</abbr></b>'
             },
             sorting: {
                 enabled: true
             }
         }, {
             id: 'extreme',
-            width: 100,
+            width: 135,
             header: {
-                format: '<b><abbr title="The # of points below the 5 percentile, or above the 95 percentile, of river level values across time.">$< 5$ | $> 95$<br>Anomalies</abbr></b>'
+                format: '<b><abbr title="The # of points below the 5 percentile, or above the 95 percentile, of river level values across time.">THRESHOLDS<br></abbr></b><br>'
             },
             sorting: {
                 enabled: true

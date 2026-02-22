@@ -3,7 +3,7 @@
 var Highcharts;
 var optionSelected;
 var dropdown = $('#option_selector');
-var url = '../warehouse/anomalies/initial/menu/menu.json';
+var url = '/warehouse/anomalies/initial/menu/menu.json';
 
 
 function __sequence(elements, field) {
@@ -62,7 +62,7 @@ dropdown.on('change', function (e) {
 function generateChart(fileNameKey) {
 
     // Relative to Amazon S3 (Simple Storage Service) Set Up
-    $.getJSON('../warehouse/anomalies/initial/points/' + fileNameKey + '.json', function (source) {
+    $.getJSON('/warehouse/anomalies/initial/points/' + fileNameKey + '.json', function (source) {
 
         // https://api.highcharts.com/highstock/plotOptions.series.dataLabels
         // https://api.highcharts.com/class-reference/Highcharts.Point#.name
@@ -81,14 +81,13 @@ function generateChart(fileNameKey) {
             asymptotes = __sequence(source['asymptotes'], 'asymptote'),
             extremes = __sequence(source['extremes'], 'original');
 
-        Highcharts.setOptions({
-            lang: {
-                thousandsSep: ','
-            }
-        });
 
         // Draw a graph
         Highcharts.stockChart('container0033', {
+
+            lang: {
+                thousandsSep: ','
+            },
 
             rangeSelector: {
                 selected: 1,
@@ -109,7 +108,7 @@ function generateChart(fileNameKey) {
             chart: {
                 zoomType: 'xy',
                 width: 465,
-                height: 535
+                height: 585
             },
 
             legend: {
@@ -147,16 +146,21 @@ function generateChart(fileNameKey) {
                 }
             },
 
-            /*xAxis: {
+            xAxis: {
                 type: 'datetime',
                 dateTimeLabelFormats: {
-                    month: '%e %b',
-                    year: '%b %Y'
+                    day: "%A, %e %B, %Y",
+                    week: "%A, %e %b, %Y",
+                    month: "%B %Y",
+                    year: "%Y"
+                },
+                labels: {
+                    format: '{value:%e %b, %Y }'
                 },
                 title: {
-                    text: 'Date'
+
                 }
-            },*/
+            },
 
             yAxis: [{
                 labels: {
@@ -184,7 +188,8 @@ function generateChart(fileNameKey) {
                 top: '47%',
                 height: '23.5%',
                 offset: 0,
-                lineWidth: 2
+                lineWidth: 2,
+                min: 3
             }, {
                 labels: {
                     align: 'left',
@@ -248,8 +253,7 @@ function generateChart(fileNameKey) {
                         }
                     },
                     tooltip: {
-                        pointFormat: '<br/><span style="color:{point.color}">\u25CF</span> <b> {series.name} </b>: ' +
-                            '{point.low:,.3f}m - {point.high:,.3f}m<br/>'
+                        pointFormat: '{point.y:,.3f}m<br/>'
                     }
                 },
                 {
@@ -266,8 +270,7 @@ function generateChart(fileNameKey) {
                         units: groupingUnits
                     },
                     tooltip: {
-                        pointFormat: '<span style="color:{point.color}">\u25CF</span> <b> {series.name} </b>: ' +
-                            '{point.y}<br/>'
+                        pointFormat: '# of equal consecutive points: {point.y}<br/>'
                     }
                 },
                 {
@@ -280,8 +283,7 @@ function generateChart(fileNameKey) {
                         units: groupingUnits
                     },
                     tooltip: {
-                        pointFormat: '<span style="color:{point.color}">\u25CF</span> <b> {series.name} </b>: ' +
-                            '{point.y}<br/>'
+                        pointFormat: '{point.y}<br/>'
                     }
                 },
                 {
@@ -290,9 +292,9 @@ function generateChart(fileNameKey) {
                     data: plausible,
                     marker: {
                         symbol: 'circle',
-                        radius: 2,
-                        fillColor: '#780222'
+                        radius: 2
                     },
+                    color: '#780222',
                     yAxis: 0,
                     dataGrouping: {
                         units: groupingUnits
@@ -303,7 +305,7 @@ function generateChart(fileNameKey) {
                 },
                 {
                     type: 'scatter',
-                    name: 'beyond 5% | 95%',
+                    name: '< 5% | > 95%',
                     data: extremes,
                     marker: {
                         symbol: 'circle',

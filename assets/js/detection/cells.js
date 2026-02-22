@@ -2,7 +2,7 @@
 var Highcharts;
 
 // Generate graph
-$.getJSON('../warehouse/anomalies/initial/perspective/perspective.json', function (source) {
+$.getJSON('/warehouse/anomalies/initial/perspective/perspective.json', function (source) {
 
     // https://api.highcharts.com/highstock/plotOptions.series.dataLabels
     // https://api.highcharts.com/class-reference/Highcharts.Point#.name
@@ -177,9 +177,6 @@ $.getJSON('../warehouse/anomalies/initial/perspective/perspective.json', functio
 
     });
 
-}).fail(function () {
-    console.log("Missing");
-    $('#container0003').empty();
 });
 
 

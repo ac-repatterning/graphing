@@ -1,5 +1,4 @@
 
-
 var Highcharts;
 var optionSelected;
 var dropdown = $('#option_selector');

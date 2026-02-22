@@ -137,7 +137,7 @@ $.getJSON('/warehouse/anomalies/initial/perspective/perspective.json', function 
             id: 'p_anomaly',
             width: 125,
             header: {
-                format: '<b><abbr title="Due to the difference between the expected value, vis-à-vis model, and the real value; missing value points are skipped.">Plausible<br>Anomalies</abbr></b>'
+                format: '<b><abbr title="Due to the difference between the expected value, vis-à-vis model, and the real value; missing value points are skipped.">PLAUSIBLE<br>ANOMALIES</abbr></b>'
             },
             sorting: {
                 enabled: true

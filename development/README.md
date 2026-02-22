@@ -42,8 +42,7 @@ docker run --rm -i -t -p 8080:80 -w /app
 
 ### Graphing
 
-The date & time formats of High Charts
-
+* [High Charts Libraries](https://www.highcharts.com/download/)
 * [date & time formats](https://api.highcharts.com/class-reference/Highcharts.Time#dateFormat)
 
 <br>

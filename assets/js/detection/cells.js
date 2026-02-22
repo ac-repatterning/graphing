@@ -155,7 +155,7 @@ $.getJSON('/warehouse/anomalies/initial/perspective/perspective.json', function 
             id: 'catchment',
             width: 205,
             header: {
-                format: '<b>Catchment</b>'
+                format: '<b><abbr title="The catchment area within which the gauge station lies.">Catchment<br></abbr><br></b>'
             },
             filtering: {
                 enabled: true,

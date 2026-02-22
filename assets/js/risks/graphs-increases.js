@@ -92,7 +92,7 @@ $.getJSON('/warehouse/risks/points/positive.json', function (source) {
         },
         title: {
             useHTML: true,
-            text: 'Rates of Change of River Levels: <b>Increases</b>'
+            text: 'Rates of Change of River Levels: <b>INCREASES</b>'
         },
 
         subtitle: {

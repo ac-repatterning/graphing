@@ -17,7 +17,8 @@ $.getJSON('/warehouse/anomalies/initial/perspective/perspective.json', function 
         asymptote: [],
         extreme: [],
         missing: [],
-        catchment: []
+        catchment: [],
+        starting: []
     };
 
     let indices = source['columns'];
@@ -29,7 +30,8 @@ $.getJSON('/warehouse/anomalies/initial/perspective/perspective.json', function 
         i_station = indices.indexOf('station_name'),
         i_latitude = indices.indexOf('latitude'),
         i_longitude = indices.indexOf('longitude'),
-        i_catchment = indices.indexOf('catchment_name');
+        i_catchment = indices.indexOf('catchment_name'),
+        i_starting = indices.indexOf('p_starting');
 
 
     // Data
@@ -46,11 +48,11 @@ $.getJSON('/warehouse/anomalies/initial/perspective/perspective.json', function 
             // ... and
             columns.p_anomaly.push(source['data'][i][i_p_anomaly]);
             columns.gap.push(source['data'][i][i_gap]);
+            columns.missing.push(source['data'][i][i_missing]);
             columns.asymptote.push(source['data'][i][i_asymptote]);
             columns.extreme.push(source['data'][i][i_extreme]);
-            columns.missing.push(source['data'][i][i_missing]);
             columns.catchment.push(source['data'][i][i_catchment]);
-
+            columns.starting.push( Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', source['data'][i][i_starting]) );
     }
 
 
@@ -172,6 +174,15 @@ $.getJSON('/warehouse/anomalies/initial/perspective/perspective.json', function 
                 enabled: true,
                 inline: false,
                 condition: 'contains'
+            }
+        }, {
+            id: 'starting',
+            width: 135,
+            header: {
+                format: '<b><abbr title="The detections span a time staring from ...">STARTING<br></abbr></b><br>'
+            },
+            sorting: {
+                enabled: false
             }
         }]
 

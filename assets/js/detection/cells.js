@@ -1,0 +1,185 @@
+
+var Highcharts;
+
+// Generate graph
+$.getJSON('../warehouse/anomalies/initial/perspective/perspective.json', function (source) {
+
+    // https://api.highcharts.com/highstock/plotOptions.series.dataLabels
+    // https://api.highcharts.com/class-reference/Highcharts.Point#.name
+    // https://api.highcharts.com/highstock/tooltip.pointFormat
+
+
+    // The fields
+    const columns = {
+        station: [],
+        p_anomaly: [],
+        gap: [],
+        asymptote: [],
+        extreme: [],
+        missing: [],
+        catchment: []
+    };
+
+    let indices = source['columns'];
+    let i_p_anomaly = indices.indexOf('p_anomaly'),
+        i_gap = indices.indexOf('gap'),
+        i_asymptote = indices.indexOf('asymptote'),
+        i_extreme = indices.indexOf('extreme'),
+        i_missing = indices.indexOf('missing'),
+        i_station = indices.indexOf('station_name'),
+        i_latitude = indices.indexOf('latitude'),
+        i_longitude = indices.indexOf('longitude'),
+        i_catchment = indices.indexOf('catchment_name');
+
+
+    // Data
+    for (let i = 0; i < source['data'].length; i += 1) {
+
+            let latitude = source['data'][i][i_latitude],
+                longitude = source['data'][i][i_longitude],
+                name = source['data'][i][i_station];
+
+            // Street Images
+            let point = `<a href='https://www.openstreetmap.org/?mlat=${latitude}&mlon=${longitude}&zoom=12#map=16/${latitude}/${longitude}' onClick="window.open('https://www.openstreetmap.org/?mlat=${latitude}&mlon=${longitude}&zoom=12#map=16/${latitude}/${longitude}', '_blank', 'popup=true,rel=noreferrer'); return false;" target="_blank">${name}</a>`;
+            columns.station.push(point);
+
+            // ... and
+            columns.p_anomaly.push(source['data'][i][i_p_anomaly]);
+            columns.gap.push(source['data'][i][i_gap]);
+            columns.asymptote.push(source['data'][i][i_asymptote]);
+            columns.extreme.push(source['data'][i][i_extreme]);
+            columns.missing.push(source['data'][i][i_missing]);
+            columns.catchment.push(source['data'][i][i_catchment]);
+
+    }
+
+
+    // Grid
+    Grid.grid('container0003', {
+
+        dataTable: {
+            columns: columns
+        },
+
+        lang: {
+            pagination: {
+                pageInfo: `{start} - {end} of {total}
+            (page {currentPage} of {totalPages})`,
+                rowsPerPage: 'rows per page'
+            }
+        },
+
+        credits: {
+            enabled: false
+        },
+
+        rendering: {
+            rows: {
+                minVisibleRows: 10
+            }
+        },
+
+        pagination: {
+            enabled: true,
+            pageSize: 10,
+            controls: {
+                pageSizeSelector: {
+                    enabled: true,
+                    options: [10, 20, 50]
+                },
+                pageInfo: true,
+                firstLastButtons: true,
+                previousNextButtons: true,
+                pageButtons: {
+                    enabled: true,
+                    count: 7
+                }
+            }
+        },
+
+        // https://api.highcharts.com/grid/#interfaces/Grid_Core_Options.Options#columndefaults
+        columnDefaults: {
+            sorting: {
+                sortable: true
+            }
+        },
+
+        // https://api.highcharts.com/grid/#interfaces/Grid_Core_Options.Options#columns
+        columns: [{
+            id: 'asymptote',
+            width: 125,
+            header: {
+                format: '<b>FLAT LINES</b><br>($\ge$ 4 points)'
+            },
+            sorting: {
+                enabled: true,
+                order: 'desc'
+            }
+        }, {
+            id: 'gap',
+            width: 125,
+            header: {
+                format: '<b>GAP</b>'
+            },
+            sorting: {
+                enabled: true
+            }
+        }, {
+            id: 'missing',
+            width: 125,
+            header: {
+                format: '<b>MISSING</b>'
+            },
+            sorting: {
+                enabled: false
+            }
+        }, {
+            id: 'p_anomaly',
+            width: 125,
+            header: {
+                format: '<b><abbr title="Plausible Anomalies">Plausible<br>Anomalies</abbr></b>'
+            },
+            sorting: {
+                enabled: true
+            }
+        }, {
+            id: 'extreme',
+            width: 100,
+            header: {
+                format: '<b><abbr title="The # of points below the 5 percentile, or above the 95 percentile, of river level values across time.">$< 5$ | $> 95$<br>Anomalies</abbr></b>'
+            },
+            sorting: {
+                enabled: true
+            }
+        }, {
+            id: 'catchment',
+            width: 205,
+            header: {
+                format: '<b>Catchment</b>'
+            },
+            filtering: {
+                enabled: true,
+                inline: false,
+                condition: 'contains'
+            }
+        }, {
+            id: 'station',
+            width: 165,
+            header: {
+                format: '<b>Station</b>'
+            },
+            filtering: {
+                enabled: true,
+                inline: false,
+                condition: 'contains'
+            }
+        }]
+
+    });
+
+}).fail(function () {
+    console.log("Missing");
+    $('#container0003').empty();
+});
+
+

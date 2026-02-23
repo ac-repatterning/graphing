@@ -1,10 +1,9 @@
-
-// noinspection DuplicatedCode
+// noinspection DuplicatedCode,ES6ConvertVarToLetConst
 
 var Highcharts;
 
 
-$.getJSON('/warehouse/risks/points/positive.json', function (source) {
+$.getJSON('/warehouse/caution/points/positive.json', function (source) {
 
     // https://api.highcharts.com/highstock/plotOptions.series.dataLabels
     // https://api.highcharts.com/class-reference/Highcharts.Point#.name
@@ -20,10 +19,10 @@ $.getJSON('/warehouse/risks/points/positive.json', function (source) {
         let indices = source[i]['columns'];
         let i_max = indices.indexOf('maximum'),
             i_lat = indices.indexOf('latest'),
-            i_med = indices.indexOf('median'),
+            // i_med = indices.indexOf('median'),
             i_sta_n = indices.indexOf('station_name'),
             i_riv = indices.indexOf('river_name'),
-            i_end = indices.indexOf('ending'),
+            i_end = indices.indexOf('p_ending'),
             i_ran = indices.indexOf('rank');
 
         let visible = false;

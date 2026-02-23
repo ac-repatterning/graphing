@@ -4,7 +4,7 @@ var Highcharts;
 
 
 // Generate graph
-$.getJSON('/warehouse/risks/points/negative.json', function (source) {
+$.getJSON('/warehouse/caution/points/negative.json', function (source) {
 
     // https://api.highcharts.com/highstock/plotOptions.series.dataLabels
     // https://api.highcharts.com/class-reference/Highcharts.Point#.name

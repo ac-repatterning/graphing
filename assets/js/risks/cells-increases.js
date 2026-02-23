@@ -6,7 +6,7 @@ var Highcharts;
 
 
 // Generate graph
-$.getJSON('/warehouse/risks/points/positive.json', function (source) {
+$.getJSON('/warehouse/caution/points/positive.json', function (source) {
 
     // https://api.highcharts.com/highstock/plotOptions.series.dataLabels
     // https://api.highcharts.com/class-reference/Highcharts.Point#.name
@@ -34,10 +34,6 @@ $.getJSON('/warehouse/risks/points/positive.json', function (source) {
             i_longitude = indices.indexOf('longitude');
 
         for (let j = 0; j < source[i]['data'].length; j += 1) {
-
-            if (source[i]['data'][j][i_latest] < 0) {
-                continue;
-            }
 
             let latitude = source[i]['data'][j][i_latitude],
                 longitude = source[i]['data'][j][i_longitude],

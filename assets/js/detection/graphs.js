@@ -78,6 +78,7 @@ function generateChart(fileNameKey) {
         let original = __sequence(source['estimates'], 'original'),
             plausible = __sequence(source['p_anomalies'], 'original'),
             gaps = __sequence(source['gaps'], 'gap'),
+            missing = __sequence(source['missing'], 'missing'),
             asymptotes = __sequence(source['asymptotes'], 'asymptote'),
             extremes = __sequence(source['extremes'], 'original');
 
@@ -278,6 +279,19 @@ function generateChart(fileNameKey) {
                     name: 'gaps',
                     data: gaps,
                     color: '#EE7600',
+                    yAxis: 2,
+                    dataGrouping: {
+                        units: groupingUnits
+                    },
+                    tooltip: {
+                        pointFormat: '# of consecutive missing points: {point.y}<br/>'
+                    }
+                },
+                {
+                    type: 'spline',
+                    name: 'missing',
+                    data: missing,
+                    color: '#000000',
                     yAxis: 2,
                     dataGrouping: {
                         units: groupingUnits

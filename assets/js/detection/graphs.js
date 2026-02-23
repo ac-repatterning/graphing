@@ -3,7 +3,7 @@
 var Highcharts;
 var optionSelected;
 var dropdown = $('#option_selector');
-var url = '/warehouse/anomalies/initial/menu/menu.json';
+var url = '/warehouse/detection/initial/menu/menu.json';
 
 
 function __sequence(elements, field) {
@@ -62,7 +62,7 @@ dropdown.on('change', function (e) {
 function generateChart(fileNameKey) {
 
     // Relative to Amazon S3 (Simple Storage Service) Set Up
-    $.getJSON('/warehouse/anomalies/initial/points/' + fileNameKey + '.json', function (source) {
+    $.getJSON('/warehouse/detection/initial/points/' + fileNameKey + '.json', function (source) {
 
         // https://api.highcharts.com/highstock/plotOptions.series.dataLabels
         // https://api.highcharts.com/class-reference/Highcharts.Point#.name

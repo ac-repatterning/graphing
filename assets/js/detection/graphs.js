@@ -234,8 +234,18 @@ function generateChart(fileNameKey) {
                 {
                     name: 'original',
                     data: original,
-                    type: 'spline',
                     turboThreshold: 4000,
+                    lineWidth: 0,
+                    marker: {
+                        enabled: true,
+                        symbol: 'circle',
+                        radius: 1.85
+                    },
+                    states: {
+                        hover: {
+                            lineWidthPlus: 0
+                        }
+                    },
                     yAxis: 0,
                     dataGrouping: {
                         enabled: true,
@@ -334,7 +344,7 @@ function generateChart(fileNameKey) {
                     marker: {
                         enabled: true,
                         symbol: 'circle',
-                        radius: 1.85
+                        radius: 2.25
                     },
                     states: {
                         hover: {
@@ -353,6 +363,7 @@ function generateChart(fileNameKey) {
                 {
                     name: '< 5% | > 95%',
                     data: extremes,
+                    visible: false,
                     lineWidth: 0,
                     marker: {
                         enabled: true,

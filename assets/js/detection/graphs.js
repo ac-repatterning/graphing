@@ -367,7 +367,7 @@ function generateChart(fileNameKey) {
                         units: groupingUnits
                     },
                     tooltip: {
-                        pointFormat: '{point.y:,.3f}m<br/>'
+                        pointFormat: '< <i>5pcl.</i> | > <i>95pcl.</i> threshold of this gauge.<br>{point.y:,.3f}m<br>'
                     }
                 }
             ]

@@ -258,7 +258,7 @@ function generateChart(fileNameKey) {
                     }
                 },
                 {
-                    name: 'flat lines',
+                    name: 'asymptotes',
                     data: asymptotes,
                     lineWidth: 0,
                     marker: {
@@ -281,9 +281,19 @@ function generateChart(fileNameKey) {
                     }
                 },
                 {
-                    type: 'spline',
                     name: 'gaps',
                     data: gaps,
+                    lineWidth: 0,
+                    marker: {
+                        enabled: true,
+                        symbol: 'circle',
+                        radius: 2
+                    },
+                    states: {
+                        hover: {
+                            lineWidthPlus: 0
+                        }
+                    },
                     color: '#EE7600',
                     yAxis: 2,
                     dataGrouping: {

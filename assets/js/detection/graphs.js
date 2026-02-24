@@ -258,12 +258,18 @@ function generateChart(fileNameKey) {
                     }
                 },
                 {
-                    type: 'scatter',
                     name: 'flat lines',
                     data: asymptotes,
+                    lineWidth: 0,
                     marker: {
-                        symbol: 'square',
+                        enabled: true,
+                        symbol: 'circle',
                         radius: 2
+                    },
+                    states: {
+                        hover: {
+                            lineWidthPlus: 0
+                        }
                     },
                     color: '#43270F',
                     yAxis: 1,

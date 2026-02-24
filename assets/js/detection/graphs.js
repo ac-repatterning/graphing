@@ -169,7 +169,7 @@ function generateChart(fileNameKey) {
                     x: 9
                 },
                 title: {
-                    text: 'series<br>(metres)',
+                    text: 'series,<br>etc.',
                     x: 0
                 },
                 height: '45%',
@@ -203,7 +203,8 @@ function generateChart(fileNameKey) {
                 top: '72.5%',
                 height: '23.5%',
                 offset: 0,
-                lineWidth: 2
+                lineWidth: 2,
+                min: 3
             }
             ],
 
@@ -264,7 +265,7 @@ function generateChart(fileNameKey) {
                     marker: {
                         enabled: true,
                         symbol: 'circle',
-                        radius: 2
+                        radius: 1.85
                     },
                     states: {
                         hover: {
@@ -287,7 +288,7 @@ function generateChart(fileNameKey) {
                     marker: {
                         enabled: true,
                         symbol: 'circle',
-                        radius: 2
+                        radius: 1.85
                     },
                     states: {
                         hover: {
@@ -310,7 +311,7 @@ function generateChart(fileNameKey) {
                     marker: {
                         enabled: true,
                         symbol: 'circle',
-                        radius: 1.25
+                        radius: 1.85
                     },
                     states: {
                         hover: {
@@ -327,12 +328,18 @@ function generateChart(fileNameKey) {
                     }
                 },
                 {
-                    type: 'scatter',
                     name: 'plausible anomalies',
                     data: plausible,
+                    lineWidth: 0,
                     marker: {
+                        enabled: true,
                         symbol: 'circle',
-                        radius: 2
+                        radius: 1.85
+                    },
+                    states: {
+                        hover: {
+                            lineWidthPlus: 0
+                        }
                     },
                     color: '#780222',
                     yAxis: 0,
@@ -340,7 +347,7 @@ function generateChart(fileNameKey) {
                         units: groupingUnits
                     },
                     tooltip: {
-                        pointFormat: '{point.y:,.2f} m<br/>'
+                        pointFormat: '{point.y:,.3f}m<br/>'
                     }
                 },
                 {
@@ -357,7 +364,7 @@ function generateChart(fileNameKey) {
                         units: groupingUnits
                     },
                     tooltip: {
-                        pointFormat: '{point.y:,.2f} m<br/>'
+                        pointFormat: '{point.y:,.3f}m<br/>'
                     }
                 }
             ],

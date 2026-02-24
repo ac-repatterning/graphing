@@ -98,11 +98,11 @@ function generateChart(fileNameKey){
             },
 
             title: {
-                text: 'Spot: ' + optionSelected
+                text: optionSelected
             },
 
             subtitle: {
-                text: '<p>Curves</p> <br/><br/>'
+                text: '<b>Water/River:</b> ' + source['river_name'] + ', <b>Catchment:</b> ' + source['catchment_name'] + '<br><br>'
             },
 
             time: {
@@ -148,7 +148,7 @@ function generateChart(fileNameKey){
                 },
                 title: {
                     useHTML: true,
-                    text: 'rates of change<br>mm/hr',
+                    text: 'weighted rates of change<br>mm/hr',
                     x: 0
                 },
                 height: '85%',

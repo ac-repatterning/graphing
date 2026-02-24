@@ -218,14 +218,14 @@ function generateChart(fileNameKey) {
                 split: true,
                 shared: true,
                 dateTimeLabelFormats: {
-                    millisecond: "%A, %e %b, %H:%M:%S.%L",
-                    second: "%A, %e %b, %H:%M:%S",
-                    minute: "%A, %e %b, %H:%M",
-                    hour: "%A, %e %b, %H:%M",
-                    day: "%A, %e %B, %Y",
-                    week: "%A, %e %b, %Y",
-                    month: "%B %Y",
-                    year: "%Y"
+                    millisecond: ['%A, %e %b, %H:%M:%S.%L', '%A, %e %b, %H:%M:%S.%L', '-%H:%M:%S.%L'],
+                    second: ['%A, %e %b, %H:%M:%S', '%A, %e %b, %H:%M:%S', '-%H:%M:%S'],
+                    minute: ['%A, %e %b, %H:%M', '%A, %e %b, %H:%M', '-%H:%M'],
+                    hour: ['%A, %e %b, %H:%M', '%A, %e %b, %H:%M', '-%H:%M'],
+                    day: ['%A, %e %b, %Y', '%A, %e %b', '-%A, %e %b, %Y'],
+                    week: ['Week from %A, %e %b, %Y', '%A, %e %b', '-%A, %e %b, %Y'],
+                    month: ['%B %Y', '%B', '-%B %Y'],
+                    year: ['%Y', '%Y', '-%Y']
                 }
 
             },
@@ -234,7 +234,6 @@ function generateChart(fileNameKey) {
                 {
                     name: 'original',
                     data: original,
-                    turboThreshold: 4000,
                     lineWidth: 0,
                     marker: {
                         enabled: true,
@@ -249,20 +248,7 @@ function generateChart(fileNameKey) {
                     yAxis: 0,
                     dataGrouping: {
                         enabled: true,
-                        units: [[
-                            'minute',                         // unit name
-                            [1]                            // allowed multiples
-                        ]],
-                        dateTimeLabelFormats: {
-                            millisecond: ['%A, %e %b, %H:%M:%S.%L', '%A, %e %b, %H:%M:%S.%L', '-%H:%M:%S.%L'],
-                            second: ['%A, %e %b, %H:%M:%S', '%A, %e %b, %H:%M:%S', '-%H:%M:%S'],
-                            minute: ['%A, %e %b, %H:%M', '%A, %e %b, %H:%M', '-%H:%M'],
-                            hour: ['%A, %e %b, %H:%M', '%A, %e %b, %H:%M', '-%H:%M'],
-                            day: ['%A, %e %b, %Y', '%A, %e %b', '-%A, %e %b, %Y'],
-                            week: ['Week from %A, %e %b, %Y', '%A, %e %b', '-%A, %e %b, %Y'],
-                            month: ['%B %Y', '%B', '-%B %Y'],
-                            year: ['%Y', '%Y', '-%Y']
-                        }
+                        units: groupingUnits
                     },
                     tooltip: {
                         pointFormat: '{point.y:,.3f}m<br/>'
@@ -282,7 +268,7 @@ function generateChart(fileNameKey) {
                             lineWidthPlus: 0
                         }
                     },
-                    color: '#43270F',
+                    color: '#598F24',
                     yAxis: 1,
                     dataGrouping: {
                         units: groupingUnits

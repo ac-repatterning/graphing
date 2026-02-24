@@ -304,16 +304,26 @@ function generateChart(fileNameKey) {
                     }
                 },
                 {
-                    type: 'spline',
                     name: 'missing',
                     data: missing,
+                    lineWidth: 0,
+                    marker: {
+                        enabled: true,
+                        symbol: 'circle',
+                        radius: 1.25
+                    },
+                    states: {
+                        hover: {
+                            lineWidthPlus: 0
+                        }
+                    },
                     color: '#000000',
                     yAxis: 2,
                     dataGrouping: {
                         units: groupingUnits
                     },
                     tooltip: {
-                        pointFormat: '{point.y}<br/>'
+                        pointFormat: 'This time point does not<br>have a measurement.<br/>'
                     }
                 },
                 {

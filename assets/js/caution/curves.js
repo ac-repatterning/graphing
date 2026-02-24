@@ -113,10 +113,7 @@ function generateChart(fileNameKey){
                 enabled: false
             },
 
-            legend: {
-                enabled: true,
-                x: -25
-            },
+
 
             exporting: {
                 buttons: {
@@ -151,7 +148,7 @@ function generateChart(fileNameKey){
                 },
                 title: {
                     useHTML: true,
-                    text: '$r_{\delta}$',
+                    text: 'rates of change<br>mm/hr',
                     x: 0
                 },
                 height: '85%',
@@ -192,7 +189,7 @@ function generateChart(fileNameKey){
                     units: groupingUnits
                 },
                 tooltip: {
-                    pointFormat: '{point.y:,.3f}<br/>'
+                    pointFormat: '{point.y:,.3f} mm/hr<br/>'
                 }
             }]
         });

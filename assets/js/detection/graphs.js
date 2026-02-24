@@ -351,12 +351,18 @@ function generateChart(fileNameKey) {
                     }
                 },
                 {
-                    type: 'scatter',
                     name: '< 5% | > 95%',
                     data: extremes,
+                    lineWidth: 0,
                     marker: {
+                        enabled: true,
                         symbol: 'circle',
-                        radius: 2
+                        radius: 1.85
+                    },
+                    states: {
+                        hover: {
+                            lineWidthPlus: 0
+                        }
                     },
                     color: '#A08E23',
                     yAxis: 0,
@@ -367,19 +373,7 @@ function generateChart(fileNameKey) {
                         pointFormat: '{point.y:,.3f}m<br/>'
                     }
                 }
-            ],
-            responsive: {
-                rules: [{
-                    condition: {
-                        maxWidth: 700
-                    },
-                    chartOptions: {
-                        rangeSelector: {
-                            inputEnabled: false
-                        }
-                    }
-                }]
-            }
+            ]
         });
 
     }).fail(function () {

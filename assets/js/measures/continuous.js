@@ -115,10 +115,10 @@ function generateChart(fileNameKey){
                 type: 'datetime',
                 dateTimeLabelFormats: {
                     millisecond:"%e %b %H:%M:%S.%L",
-                    second:"%e %b %H:%M:%S",
-                    minute:"%e %b %H:%M",
-                    hour:"%e %b %H:%M",
-                    day:"%e %b %Y",
+                    second:"%e %b<br>%H:%M:%S",
+                    minute:"%e %b<br>%H:%M",
+                    hour:"%e %b<br>%H:%M",
+                    day:"%e %b<br>%Y",
                     week:"%e %b %Y",
                     month:"%b %Y",
                     year:"%Y"

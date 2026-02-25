@@ -1,3 +1,5 @@
+// noinspection ES6ConvertVarToLetConst,DuplicatedCode
+
 var Highcharts;
 var optionSelected;
 var dropdown = $('#option_selector');

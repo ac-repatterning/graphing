@@ -176,6 +176,21 @@ function generateChart(fileNameKey){
                 type: 'datetime',
                 crosshair: {
                     enabled: true
+                },
+                dateTimeLabelFormats: {
+                    second:"%e %b<br>%H:%M:%S",
+                    minute:"%e %b<br>%H:%M",
+                    hour:"%e %b<br>%H:%M",
+                    day: "%A, %e %B<br>%Y",
+                    week: "%A, %e %b<br>%Y",
+                    month: "%B %Y",
+                    year: "%Y"
+                },
+                labels: {
+                    format: '{value:%e %b<br>%Y }'
+                },
+                title: {
+
                 }
             },
 

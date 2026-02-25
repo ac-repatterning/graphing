@@ -108,8 +108,8 @@ function generateChart(fileNameKey) {
 
             chart: {
                 zoomType: 'xy',
-                width: 465,
-                height: 585
+                width: 485,
+                height: 635
             },
 
             legend: {
@@ -172,7 +172,7 @@ function generateChart(fileNameKey) {
                     text: 'series,<br>etc.',
                     x: 0
                 },
-                height: '45%',
+                height: '41.5%',
                 lineWidth: 2,
                 resize: {
                     enabled: true
@@ -200,7 +200,7 @@ function generateChart(fileNameKey) {
                     text: 'gaps<br>& missing',
                     x: 0
                 },
-                top: '72.5%',
+                top: '76.0%',
                 height: '23.5%',
                 offset: 0,
                 lineWidth: 2,
@@ -251,7 +251,7 @@ function generateChart(fileNameKey) {
                         units: groupingUnits
                     },
                     tooltip: {
-                        pointFormat: '{point.y:,.3f}m<br/>'
+                        pointFormat: 'Sensor measure: {point.y:,.3f}m<br/>'
                     }
                 },
                 {
@@ -343,7 +343,7 @@ function generateChart(fileNameKey) {
                         units: groupingUnits
                     },
                     tooltip: {
-                        pointFormat: '{point.y:,.3f}m<br/>'
+                        pointFormat: 'An anomalous measure?<br>{point.y:,.3f}m<br/>'
                     }
                 },
                 {

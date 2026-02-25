@@ -257,7 +257,7 @@ function generateChart(fileNameKey) {
                             second: ['%A, %e %b, %H:%M:%S', '%e %b, %H:%M:%S', '-%H:%M:%S'],
                             minute: ['%A, %e %b, %H:%M', '%e %b, %H:%M', '-%H:%M'],
                             hour: ['%A, %e %b, %H:%M', '%e %b, %H:%M', '-%H:%M'],
-                            day: ['%A, %e %b', '%e %b, %Y', '-%A, %b %e, %Y'],
+                            day: ['%A, %e %b', '%e %b, %Y', '-%A, %e %b, %Y'],
                             week: ['Week from %A, %e %b, %Y', '%A, %e %b', '-%A, %e %b, %Y'],
                             month: ['%B %Y', '%B', '-%B %Y'],
                             year: ['%Y', '%Y', '-%Y']

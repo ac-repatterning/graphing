@@ -221,11 +221,11 @@ function generateChart(fileNameKey) {
                 split: true,
                 shared: true,
                 dateTimeLabelFormats: {
-                    millisecond: ['%A, %e %b, %H:%M:%S.%L', '%A, %e %b, %H:%M:%S.%L', '-%H:%M:%S.%L'],
-                    second: ['%A, %e %b, %H:%M:%S', '%A, %e %b, %H:%M:%S', '-%H:%M:%S'],
-                    minute: ['%A, %e %b, %H:%M', '%A, %e %b, %H:%M', '-%H:%M'],
-                    hour: ['%A, %e %b, %H:%M', '%A, %e %b, %H:%M', '-%H:%M'],
-                    day: ['%A, %e %b, %Y', '%A, %e %b', '-%A, %e %b, %Y'],
+                    millisecond: ['%A, %e %b, %H:%M:%S.%L', '%e %b, %H:%M:%S.%L', '-%H:%M:%S.%L'],
+                    second: ['%A, %e %b, %H:%M:%S', '%e %b, %H:%M:%S', '-%H:%M:%S'],
+                    minute: ['%A, %e %b, %H:%M', '%e %b, %H:%M', '-%H:%M'],
+                    hour: ['%A, %e %b, %H:%M', '%e %b, %H:%M', '-%H:%M'],
+                    day: ['%A, %e %b', '%e %b, %Y', '-%A, %b %e, %Y'],
                     week: ['Week from %A, %e %b, %Y', '%A, %e %b', '-%A, %e %b, %Y'],
                     month: ['%B %Y', '%B', '-%B %Y'],
                     year: ['%Y', '%Y', '-%Y']
@@ -251,7 +251,17 @@ function generateChart(fileNameKey) {
                     yAxis: 0,
                     dataGrouping: {
                         enabled: true,
-                        units: groupingUnits
+                        units: groupingUnits,
+                        dateTimeLabelFormats: {
+                            millisecond: ['%A, %e %b, %H:%M:%S.%L', '%e %b, %H:%M:%S.%L', '-%H:%M:%S.%L'],
+                            second: ['%A, %e %b, %H:%M:%S', '%e %b, %H:%M:%S', '-%H:%M:%S'],
+                            minute: ['%A, %e %b, %H:%M', '%e %b, %H:%M', '-%H:%M'],
+                            hour: ['%A, %e %b, %H:%M', '%e %b, %H:%M', '-%H:%M'],
+                            day: ['%A, %e %b', '%e %b, %Y', '-%A, %b %e, %Y'],
+                            week: ['Week from %A, %e %b, %Y', '%A, %e %b', '-%A, %e %b, %Y'],
+                            month: ['%B %Y', '%B', '-%B %Y'],
+                            year: ['%Y', '%Y', '-%Y']
+                        }
                     },
                     tooltip: {
                         pointFormat: 'Sensor measure: {point.y:,.3f}m<br/>'

@@ -29,17 +29,12 @@ $.getJSON('/warehouse/detection/initial/perspective/perspective.json', function 
         i_extreme = indices.indexOf('extreme'),
         i_missing = indices.indexOf('missing'),
         i_station = indices.indexOf('station_name'),
-        i_latitude = indices.indexOf('latitude'),
-        i_longitude = indices.indexOf('longitude'),
         i_catchment = indices.indexOf('catchment_name'),
         i_starting = indices.indexOf('p_starting');
 
 
     // Data
     for (let i = 0; i < source['data'].length; i += 1) {
-
-        // let latitude = source['data'][i][i_latitude], longitude = source['data'][i][i_longitude];
-        // let point = `<a href='https://www.openstreetmap.org/?mlat=${latitude}&mlon=${longitude}&zoom=12#map=16/${latitude}/${longitude}' onClick="window.open('https://www.openstreetmap.org/?mlat=${latitude}&mlon=${longitude}&zoom=12#map=16/${latitude}/${longitude}', '_blank', 'popup=true,rel=noreferrer'); return false;" target="_blank">${name}</a>`;
 
         let name = source['data'][i][i_station],
             beginning = Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', source['data'][i][i_starting]);
@@ -179,16 +174,7 @@ $.getJSON('/warehouse/detection/initial/perspective/perspective.json', function 
                 inline: false,
                 condition: 'contains'
             }
-        } /*{
-            id: 'starting',
-            width: 135,
-            header: {
-                format: '<b><abbr title="The detections span a time staring from ...">STARTING<br></abbr></b><br>'
-            },
-            sorting: {
-                enabled: false
-            }
-        }*/
+        }
         ]
 
     });

@@ -139,7 +139,7 @@ function generateChart(fileNameKey){
 
             chart: {
                 zoomType: 'x',
-                width: 535,
+                width: 515,
                 height: 595
             },
 

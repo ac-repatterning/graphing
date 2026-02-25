@@ -58,7 +58,6 @@ $.getJSON('/warehouse/caution/points/negative.json', function (source) {
                     '<b>gauge station:</b> {point.name}<br/>' +
                     '<b>catchment:</b> {series.name}</br>' +
                     '<b>latest rate:</b> {point.description}'
-
             }
         });
 

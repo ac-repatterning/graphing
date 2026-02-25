@@ -150,13 +150,16 @@ function generateChart(fileNameKey) {
             xAxis: {
                 type: 'datetime',
                 dateTimeLabelFormats: {
-                    day: "%A, %e %B, %Y",
-                    week: "%A, %e %b, %Y",
+                    second:"%e %b<br>%H:%M:%S",
+                    minute:"%e %b<br>%H:%M",
+                    hour:"%e %b<br>%H:%M",
+                    day: "%A, %e %B<br>%Y",
+                    week: "%A, %e %b<br>%Y",
                     month: "%B %Y",
                     year: "%Y"
                 },
                 labels: {
-                    format: '{value:%e %b, %Y }'
+                    format: '{value:%e %b<br>%Y }'
                 },
                 title: {
 

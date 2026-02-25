@@ -172,7 +172,7 @@ function generateChart(fileNameKey) {
                     text: 'series,<br>etc.',
                     x: 0
                 },
-                height: '41.5%',
+                height: '39.5%',
                 lineWidth: 2,
                 resize: {
                     enabled: true
@@ -186,7 +186,7 @@ function generateChart(fileNameKey) {
                     text: 'asymptotes:<br>flat lines',
                     x: 0
                 },
-                top: '47%',
+                top: '45%',
                 height: '23.5%',
                 offset: 0,
                 lineWidth: 2,
@@ -200,7 +200,7 @@ function generateChart(fileNameKey) {
                     text: 'gaps<br>& missing',
                     x: 0
                 },
-                top: '76.0%',
+                top: '74.0%',
                 height: '23.5%',
                 offset: 0,
                 lineWidth: 2,

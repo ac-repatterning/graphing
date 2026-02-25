@@ -149,6 +149,9 @@ function generateChart(fileNameKey) {
 
             xAxis: {
                 type: 'datetime',
+                crosshair: {
+                    enabled: true
+                },
                 dateTimeLabelFormats: {
                     second:"%e %b<br>%H:%M:%S",
                     minute:"%e %b<br>%H:%M",

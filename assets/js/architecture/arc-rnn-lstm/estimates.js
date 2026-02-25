@@ -139,7 +139,7 @@ function generateChart(fileNameKey){
 
             chart: {
                 zoomType: 'x',
-                width: 535,
+                width: 515,
                 height: 595
             },
 
@@ -179,6 +179,23 @@ function generateChart(fileNameKey){
                             'downloadPNG', 'downloadJPEG', 'downloadPDF', 'downloadSVG', 'separator',
                             'downloadXLS', 'downloadCSV']
                     }
+                }
+            },
+
+            xAxis: {
+                type: 'datetime',
+                dateTimeLabelFormats: {
+                    second:"%e %b<br>%H:%M:%S",
+                    minute:"%e %b<br>%H:%M",
+                    hour:"%a, %e %b<br>%H:%M",
+                    day: "%a, %e %b<br>%Y",
+                    week: "%a, %e %b<br>%Y",
+                    month: "%B %Y",
+                    year: "%Y"
+                },
+
+                title: {
+
                 }
             },
 
@@ -242,7 +259,16 @@ function generateChart(fileNameKey){
                 color: '#6B8E23',
                 yAxis: 0,
                 dataGrouping: {
-                    units: groupingUnits
+                    units: groupingUnits,
+                    dateTimeLabelFormats: {
+                        millisecond: ['%A, %e %b, %H:%M:%S.%L', '%e %b, %H:%M:%S.%L', '-%H:%M:%S.%L'],
+                        second: ['%A, %e %b, %H:%M:%S', '%e %b, %H:%M:%S', '-%H:%M:%S'],
+                        minute: ['%A, %e %b, %H:%M', '%e %b, %H:%M', '-%H:%M'],
+                        hour: ['%A, %e %b, %H:%M', '%e %b, %H:%M', '-%H:%M'],
+                        day: ['%A, %e %b', '%e %b, %Y', '-%A, %e %b, %Y'],
+                        week: ['Week from %A, %e %b, %Y', '%A, %e %b', '-%A, %e %b, %Y'],
+                        month: ['%B %Y', '%B', '-%B %Y'],
+                        year: ['%Y', '%Y', '-%Y']}
                 },
                 tooltip: {
                     pointFormat: '<span style="color:{point.color}">\u25CF</span> <b> {series.name} </b>: ' +

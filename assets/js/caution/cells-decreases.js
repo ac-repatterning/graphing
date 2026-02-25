@@ -126,7 +126,7 @@ $.getJSON('/warehouse/caution/points/negative.json', function (source) {
             }
         },{
             id: 'catchment',
-            width: 205,
+            width: 175,
             header: {
                 format: '<b>Catchment</b>'
             },

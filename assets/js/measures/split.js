@@ -1,4 +1,4 @@
-// noinspection ES6ConvertVarToLetConst,DuplicatedCode
+// noinspection DuplicatedCode,ES6ConvertVarToLetConst
 
 var Highcharts;
 var optionSelected;
@@ -39,14 +39,46 @@ dropdown.on('change', function (e) {
 // Generate graphs
 function generateChart(fileNameKey){
 
-    $.getJSON('/warehouse/measures/points/continuous/' + fileNameKey + '.json', function (source)  {
+    $.getJSON('/warehouse/measures/points/split/' + fileNameKey + '.json', function (source)  {
 
 
         // split the data set into ...
-        let groupingUnits = [[
+        let sectors = [],
+            groupingUnits = [[
                 'minute',                         // unit name
                 [1]                            // allowed multiples
             ]];
+
+        let frame = source;
+        for (let i = 0; i < frame.data.length; i += 1) {
+
+            sectors.push({
+                name: frame['periods'][i].substring(0, 4),
+                data: frame.data[i],
+                type: 'spline',
+                dataGrouping: {
+                    enabled: true,
+                    units: groupingUnits,
+                    dateTimeLabelFormats: {
+                        millisecond: ['%A, %e %b, %H:%M:%S.%L', '-%H:%M:%S.%L'],
+                        second: ['%A, %e %b, %H:%M:%S', '-%H:%M:%S'],
+                        minute: ['%A, %e %b, %H:%M', '-%H:%M'],
+                        hour: ['%A, %e %b, %H:%M', '-%H:%M'],
+                        day: ['%A, %e %b, %Y', '-%A, %e %b, %Y'],
+                        week: ['Week from %A, %e %b, %Y', '-%A, %e %b, %Y'],
+                        month: ['%B %Y', '%B', '-%B %Y'],
+                        year: ['%Y', '%Y', '-%Y']
+                    }
+                },
+                tooltip: {
+                    pointFormat: '<span style="color:{point.color}">\u25CF</span> <b> {series.name} </b>: ' +
+                        '{point.y:,.3f}m<br/>'
+                },
+                visible: i > 2
+
+            });
+
+        }
 
         // Formatting
         Highcharts.setOptions({
@@ -58,10 +90,10 @@ function generateChart(fileNameKey){
 
 
         // Draw a graph
-        Highcharts.stockChart('container0007', {
+        Highcharts.stockChart('container0005', {
 
             rangeSelector: {
-                selected: 2,
+                selected: 5,
                 verticalAlign: 'top',
                 floating: false,
                 inputPosition: {
@@ -79,8 +111,8 @@ function generateChart(fileNameKey){
             chart: {
                 type: 'spline',
                 zoomType: 'xy',
-                width: 465,
-                height: 410
+                width: 435,
+                height: 465
             },
 
             title: {
@@ -88,14 +120,23 @@ function generateChart(fileNameKey){
             },
 
             subtitle: {
-                text: 'Gauge River/Water Spot: ' + source['attributes']['river_name']
+                text: 'Gauge River/Water Spot: ' + frame['attributes']['river_name']
             },
 
             credits: {
                 enabled: false
             },
 
-            yAxis: [{
+            legend: {
+                enabled: true,
+                itemStyle: {
+                    fontSize: '13px',
+                    fontWeight: 400,
+                    textOverflow: "ellipsis"
+                },
+            },
+
+            yAxis: {
                 labels: {
                     align: 'left',
                     x: 9
@@ -108,23 +149,22 @@ function generateChart(fileNameKey){
                 resize: {
                     enabled: true
                 }
-            }
-            ],
+            },
 
             xAxis: {
                 type: 'datetime',
-                crosshair: {
-                    enabled: true
-                },
                 dateTimeLabelFormats: {
                     millisecond:"%e %b %H:%M:%S.%L",
                     second:"%e %b<br>%H:%M:%S",
                     minute:"%e %b<br>%H:%M",
                     hour:"%e %b<br>%H:%M",
                     day:"%e %b<br>%Y",
-                    week:"%e %b %Y",
+                    week:"%e %b<br>%Y",
                     month:"%b %Y",
                     year:"%Y"
+                },
+                labels: {
+                    format: '{value:%e %b<br>%Y }'
                 },
                 title: {
 
@@ -132,8 +172,8 @@ function generateChart(fileNameKey){
             },
 
             caption: {
-                text: '<p>A gauge\'s river level measures;  ' +
-                    'metres.</p>'
+                text: '<p>Each spline represents a gauge\'s river level measures ' +
+                    'during a single year.</p>'
             },
 
             exporting: {
@@ -147,57 +187,25 @@ function generateChart(fileNameKey){
             },
 
             tooltip: {
-                share: false,
-                split: false,
-                dateTimeLabelFormats: {
-                    millisecond:"%A, %e %b, %H:%M:%S.%L",
-                    second:"%A, %e %b, %H:%M:%S",
-                    minute:"%A, %e %b, %H:%M",
-                    hour:"%A, %e %b, %H:%M",
-                    day:"%A, %e %b, %Y",
-                    week:"%A, %e %b, %Y",
-                    month:"%A, %e %b, %Y",
-                    year:"%Y"
-                }
-
+                split: true
             },
 
-            series: [
-                {
-                    name: source.attributes['station_name'],
-                    data: source.data,
-                    type: 'spline',
-                    pointStart: source['starting'],
-                    pointInterval: source['interval'],
-                    turboThreshold: 4000,
-                    dataGrouping: {
-                        enabled: true,
-                        units: groupingUnits,
-                        dateTimeLabelFormats: {
-                            millisecond: ['%A, %e %b, %H:%M:%S.%L', '-%H:%M:%S.%L'],
-                            second: ['%A, %e %b, %H:%M:%S', '-%H:%M:%S'],
-                            minute: ['%A, %e %b, %H:%M', '-%H:%M'],
-                            hour: ['%A, %e %b, %H:%M', '-%H:%M'],
-                            day: ['%A, %e %b, %Y', '-%A, %e %b, %Y'],
-                            week: ['Week from %A, %e %b, %Y', '-%A, %e %b, %Y'],
-                            month: ['%B %Y', '%B', '-%B %Y'],
-                            year: ['%Y', '%Y', '-%Y']
-                        }
-                    },
-                    tooltip: {
-                        pointFormat: '<br/><span style="color:{series.color}">\u25CF</span> <b> {series.name} </b>: ' +
-                            '{point.y:,.3f}m<br/>'
-                    }
+            plotOptions: {
+                series: {
+                    pointStart: frame['starting'],
+                    pointInterval: frame['interval'],
+                    turboThreshold: 4000
                 }
-            ]
+            },
 
+            series: sectors
 
         });
 
 
     }).fail(function() {
         console.log("Missing");
-        $('#container0007').empty();
+        $('#container0005').empty();
     });
 
 

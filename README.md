@@ -1,6 +1,6 @@
 <br>
 
-Graphs
+**GRAPHING**
 
 <br>
 <br>

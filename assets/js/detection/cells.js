@@ -1,3 +1,4 @@
+// noinspection ES6ConvertVarToLetConst,JSUnresolvedReference
 
 var Highcharts;
 
@@ -14,11 +15,10 @@ $.getJSON('/warehouse/detection/initial/perspective/perspective.json', function 
         station: [],
         p_anomaly: [],
         gap: [],
+        missing: [],
         asymptote: [],
         extreme: [],
-        missing: [],
-        catchment: [],
-        starting: []
+        catchment: []
     };
 
     let indices = source['columns'];
@@ -28,8 +28,6 @@ $.getJSON('/warehouse/detection/initial/perspective/perspective.json', function 
         i_extreme = indices.indexOf('extreme'),
         i_missing = indices.indexOf('missing'),
         i_station = indices.indexOf('station_name'),
-        i_latitude = indices.indexOf('latitude'),
-        i_longitude = indices.indexOf('longitude'),
         i_catchment = indices.indexOf('catchment_name'),
         i_starting = indices.indexOf('p_starting');
 
@@ -37,22 +35,22 @@ $.getJSON('/warehouse/detection/initial/perspective/perspective.json', function 
     // Data
     for (let i = 0; i < source['data'].length; i += 1) {
 
-            let latitude = source['data'][i][i_latitude],
-                longitude = source['data'][i][i_longitude],
-                name = source['data'][i][i_station];
+        let name = source['data'][i][i_station],
+            beginning = Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', source['data'][i][i_starting]);
 
-            // Street Images
-            let point = `<a href='https://www.openstreetmap.org/?mlat=${latitude}&mlon=${longitude}&zoom=12#map=16/${latitude}/${longitude}' onClick="window.open('https://www.openstreetmap.org/?mlat=${latitude}&mlon=${longitude}&zoom=12#map=16/${latitude}/${longitude}', '_blank', 'popup=true,rel=noreferrer'); return false;" target="_blank">${name}</a>`;
-            columns.station.push(point);
+        // Street Images
+        let expression = `<abbr title='period beginning ${beginning}'>${name}</abbr>`;
+        columns.station.push(expression);
 
-            // ... and
-            columns.p_anomaly.push(source['data'][i][i_p_anomaly]);
-            columns.gap.push(source['data'][i][i_gap]);
-            columns.missing.push(source['data'][i][i_missing]);
-            columns.asymptote.push(source['data'][i][i_asymptote]);
-            columns.extreme.push(source['data'][i][i_extreme]);
-            columns.catchment.push(source['data'][i][i_catchment]);
-            columns.starting.push( Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', source['data'][i][i_starting]) );
+        // ... and
+        columns.p_anomaly.push(source['data'][i][i_p_anomaly]);
+        columns.gap.push(source['data'][i][i_gap]);
+        columns.missing.push(source['data'][i][i_missing]);
+        columns.asymptote.push(source['data'][i][i_asymptote]);
+        columns.extreme.push(source['data'][i][i_extreme]);
+        columns.catchment.push(source['data'][i][i_catchment]);
+
+        // columns.starting.push( Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', source['data'][i][i_starting]) );
     }
 
 
@@ -175,16 +173,8 @@ $.getJSON('/warehouse/detection/initial/perspective/perspective.json', function 
                 inline: false,
                 condition: 'contains'
             }
-        }, {
-            id: 'starting',
-            width: 135,
-            header: {
-                format: '<b><abbr title="The detections span a time staring from ...">STARTING<br></abbr></b><br>'
-            },
-            sorting: {
-                enabled: false
-            }
-        }]
+        }
+        ]
 
     });
 

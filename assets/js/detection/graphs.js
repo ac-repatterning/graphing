@@ -108,8 +108,8 @@ function generateChart(fileNameKey) {
 
             chart: {
                 zoomType: 'xy',
-                width: 465,
-                height: 585
+                width: 485,
+                height: 635
             },
 
             legend: {
@@ -149,14 +149,20 @@ function generateChart(fileNameKey) {
 
             xAxis: {
                 type: 'datetime',
+                crosshair: {
+                    enabled: true
+                },
                 dateTimeLabelFormats: {
-                    day: "%A, %e %B, %Y",
-                    week: "%A, %e %b, %Y",
+                    second:"%e %b<br>%H:%M:%S",
+                    minute:"%e %b<br>%H:%M",
+                    hour:"%e %b<br>%H:%M",
+                    day: "%A, %e %B<br>%Y",
+                    week: "%A, %e %b<br>%Y",
                     month: "%B %Y",
                     year: "%Y"
                 },
                 labels: {
-                    format: '{value:%e %b, %Y }'
+                    format: '{value:%e %b<br>%Y }'
                 },
                 title: {
 
@@ -172,7 +178,7 @@ function generateChart(fileNameKey) {
                     text: 'series,<br>etc.',
                     x: 0
                 },
-                height: '45%',
+                height: '39.5%',
                 lineWidth: 2,
                 resize: {
                     enabled: true
@@ -186,7 +192,7 @@ function generateChart(fileNameKey) {
                     text: 'asymptotes:<br>flat lines',
                     x: 0
                 },
-                top: '47%',
+                top: '45%',
                 height: '23.5%',
                 offset: 0,
                 lineWidth: 2,
@@ -200,7 +206,7 @@ function generateChart(fileNameKey) {
                     text: 'gaps<br>& missing',
                     x: 0
                 },
-                top: '72.5%',
+                top: '74.0%',
                 height: '23.5%',
                 offset: 0,
                 lineWidth: 2,
@@ -218,11 +224,11 @@ function generateChart(fileNameKey) {
                 split: true,
                 shared: true,
                 dateTimeLabelFormats: {
-                    millisecond: ['%A, %e %b, %H:%M:%S.%L', '%A, %e %b, %H:%M:%S.%L', '-%H:%M:%S.%L'],
-                    second: ['%A, %e %b, %H:%M:%S', '%A, %e %b, %H:%M:%S', '-%H:%M:%S'],
-                    minute: ['%A, %e %b, %H:%M', '%A, %e %b, %H:%M', '-%H:%M'],
-                    hour: ['%A, %e %b, %H:%M', '%A, %e %b, %H:%M', '-%H:%M'],
-                    day: ['%A, %e %b, %Y', '%A, %e %b', '-%A, %e %b, %Y'],
+                    millisecond: ['%A, %e %b, %H:%M:%S.%L', '%e %b, %H:%M:%S.%L', '-%H:%M:%S.%L'],
+                    second: ['%A, %e %b, %H:%M:%S', '%e %b, %H:%M:%S', '-%H:%M:%S'],
+                    minute: ['%A, %e %b, %H:%M', '%e %b, %H:%M', '-%H:%M'],
+                    hour: ['%A, %e %b, %H:%M', '%e %b, %H:%M', '-%H:%M'],
+                    day: ['%A, %e %b', '%e %b, %Y', '-%A, %b %e, %Y'],
                     week: ['Week from %A, %e %b, %Y', '%A, %e %b', '-%A, %e %b, %Y'],
                     month: ['%B %Y', '%B', '-%B %Y'],
                     year: ['%Y', '%Y', '-%Y']
@@ -248,10 +254,20 @@ function generateChart(fileNameKey) {
                     yAxis: 0,
                     dataGrouping: {
                         enabled: true,
-                        units: groupingUnits
+                        units: groupingUnits,
+                        dateTimeLabelFormats: {
+                            millisecond: ['%A, %e %b, %H:%M:%S.%L', '%e %b, %H:%M:%S.%L', '-%H:%M:%S.%L'],
+                            second: ['%A, %e %b, %H:%M:%S', '%e %b, %H:%M:%S', '-%H:%M:%S'],
+                            minute: ['%A, %e %b, %H:%M', '%e %b, %H:%M', '-%H:%M'],
+                            hour: ['%A, %e %b, %H:%M', '%e %b, %H:%M', '-%H:%M'],
+                            day: ['%A, %e %b', '%e %b, %Y', '-%A, %e %b, %Y'],
+                            week: ['Week from %A, %e %b, %Y', '%A, %e %b', '-%A, %e %b, %Y'],
+                            month: ['%B %Y', '%B', '-%B %Y'],
+                            year: ['%Y', '%Y', '-%Y']
+                        }
                     },
                     tooltip: {
-                        pointFormat: '{point.y:,.3f}m<br/>'
+                        pointFormat: 'Sensor measure: {point.y:,.3f}m<br/>'
                     }
                 },
                 {
@@ -343,7 +359,7 @@ function generateChart(fileNameKey) {
                         units: groupingUnits
                     },
                     tooltip: {
-                        pointFormat: '{point.y:,.3f}m<br/>'
+                        pointFormat: 'An anomalous measure?<br>{point.y:,.3f}m<br/>'
                     }
                 },
                 {

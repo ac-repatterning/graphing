@@ -19,10 +19,11 @@ $.getJSON('/warehouse/caution/points/positive.json', function (source) {
         let indices = source[i]['columns'];
         let i_max = indices.indexOf('maximum'),
             i_lat = indices.indexOf('latest'),
-            // i_med = indices.indexOf('median'),
+            i_med = indices.indexOf('median'),
             i_sta_n = indices.indexOf('station_name'),
             i_riv = indices.indexOf('river_name'),
             i_end = indices.indexOf('p_ending'),
+            i_beg = indices.indexOf('p_beginning'),
             i_ran = indices.indexOf('rank');
 
         let visible = false;
@@ -36,10 +37,12 @@ $.getJSON('/warehouse/caution/points/positive.json', function (source) {
                 x: Math.abs(source[i]['data'][j][i_lat]), // latest
                 y: Math.abs(source[i]['data'][j][i_max]), // maximum
                 name: source[i]['data'][j][i_sta_n], // station name
-                description: Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', source[i]['data'][j][i_end]) + '<br/>' +
-                    '<b>latest rate:</b> ' + Highcharts.numberFormat(source[i]['data'][j][i_lat], 4) + ' mm/hr<br/>' +
+                description: '<b>' + Highcharts.numberFormat(source[i]['data'][j][i_lat], 4) + ' mm/hr</b><br/>' +
                     '<b>maximum rate:</b> ' + Highcharts.numberFormat(source[i]['data'][j][i_max], 4) + ' mm/hr<br/>' +
-                    '<b>river/water:</b> ' + source[i]['data'][j][i_riv] + '<br/>'
+                    '<b>median rate:</b> ' + Highcharts.numberFormat(source[i]['data'][j][i_med], 4) + ' mm/hr<br/>' +
+                    '<b>river/water:</b> ' + source[i]['data'][j][i_riv] + '<br/><br/>' +
+                    '<b>PERIOD:</b> ' + Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', source[i]['data'][j][i_beg]) + '<br/>' +
+                    '&Rarr; ' + Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', source[i]['data'][j][i_end])
             });
 
         }
@@ -53,8 +56,8 @@ $.getJSON('/warehouse/caution/points/positive.json', function (source) {
             tooltip: {
                 pointFormat: '<br/>' +
                     '<b>gauge station:</b> {point.name}<br/>' +
-                    '<b>period ending:</b> {point.description}' +
-                    '<b>catchment:</b> {series.name}'
+                    '<b>catchment:</b> {series.name}</br>' +
+                    '<b>latest rate:</b> {point.description}'
             }
         });
 

@@ -1,5 +1,4 @@
-
-// noinspection ES6ConvertVarToLetConst
+// noinspection ES6ConvertVarToLetConst,JSUnresolvedReference
 
 var Highcharts;
 

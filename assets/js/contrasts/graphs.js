@@ -56,7 +56,7 @@ function generateChart(fileNameKey){
             ]];
 
         for (var i = 0; i < source.data.length; i += 1) {
-            
+
             sectors.push({
                 name: source.attributes.data[i][i_station],
                 data: source.data[i],

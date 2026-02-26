@@ -55,7 +55,7 @@ function __instances(elements) {
 }
 
 
-$.getJSON(endpoint + '/statements.json', function (source) {
+$.getJSON(endpoint + '/by_stage_and_catchment.json', function (source) {
 
     // https://api.highcharts.com/highstock/plotOptions.series.dataLabels
     // https://api.highcharts.com/class-reference/Highcharts.Point#.name

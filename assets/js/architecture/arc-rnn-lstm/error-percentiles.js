@@ -19,8 +19,8 @@ function __instances(elements) {
         // metrics: per gauge station
         let indices = elements[i]['columns'];
         let s_name = indices.indexOf('station_name'),
-            l_whisker = indices.indexOf('l_whisker'),
-            u_whisker = indices.indexOf('u_whisker'),
+            l_whisker = indices.indexOf('l_whisker_pe'),
+            u_whisker = indices.indexOf('u_whisker_pe'),
             c_name = indices.indexOf('catchment_name');
 
         for (let j = 0; j < elements[i]['data'].length; j += 1) {
@@ -55,7 +55,7 @@ function __instances(elements) {
 }
 
 
-$.getJSON(endpoint + '/statements.json', function (source) {
+$.getJSON(endpoint + '/by_stage_and_catchment.json', function (source) {
 
     // https://api.highcharts.com/highstock/plotOptions.series.dataLabels
     // https://api.highcharts.com/class-reference/Highcharts.Point#.name

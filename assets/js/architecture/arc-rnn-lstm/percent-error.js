@@ -73,11 +73,11 @@ function generateChart(fileNameKey) {
 
         let frame_trq = source['q_training'];
         let qt = frame_trq.columns;
-        let lw = qt.indexOf('l_whisker'),
-            lq = qt.indexOf('l_quartile'),
-            me = qt.indexOf('median'),
-            uq = qt.indexOf('u_quartile'),
-            uw = qt.indexOf('u_whisker');
+        let lw = qt.indexOf('l_whisker_pe'),
+            lq = qt.indexOf('l_quartile_pe'),
+            me = qt.indexOf('median_pe'),
+            uq = qt.indexOf('u_quartile_pe'),
+            uw = qt.indexOf('u_whisker_pe');
         q_training = [{
             x: -0.1,
             low: frame_trq.data[0][lw],
@@ -102,11 +102,11 @@ function generateChart(fileNameKey) {
 
         let frame_teq = source['q_testing'];
         qt = frame_teq.columns;
-        lw = qt.indexOf('l_whisker');
-        lq = qt.indexOf('l_quartile');
-        me = qt.indexOf('median');
-        uq = qt.indexOf('u_quartile');
-        uw = qt.indexOf('u_whisker');
+        lw = qt.indexOf('l_whisker_pe');
+        lq = qt.indexOf('l_quartile_pe');
+        me = qt.indexOf('median_pe');
+        uq = qt.indexOf('u_quartile_pe');
+        uw = qt.indexOf('u_whisker_pe');
         q_testing = [{
             x: 1.1,
             low: frame_teq.data[0][lw],

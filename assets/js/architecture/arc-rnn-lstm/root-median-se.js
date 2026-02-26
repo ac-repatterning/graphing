@@ -43,7 +43,7 @@ function generateChart(fileNameKey) {
 
 
     // Relative to Amazon S3 (Simple Storage Service) Set Up
-    $.getJSON(endpoint + '/aggregates.json', function (data) {
+    $.getJSON(endpoint + '/by_catchment_and_stage.json', function (data) {
 
         // https://api.highcharts.com/highstock/plotOptions.series.dataLabels
         // https://api.highcharts.com/class-reference/Highcharts.Point#.name

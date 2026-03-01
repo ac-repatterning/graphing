@@ -3,7 +3,7 @@
 var Highcharts;
 
 // Generate graph
-$.getJSON('/warehouse/detection/initial/perspective/perspective.json', function (source) {
+$.getJSON('/warehouse/detection/live/perspective/perspective.json', function (source) {
 
     // https://api.highcharts.com/highstock/plotOptions.series.dataLabels
     // https://api.highcharts.com/class-reference/Highcharts.Point#.name

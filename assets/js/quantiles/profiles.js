@@ -140,7 +140,8 @@ function generateChart(fileNameKey) {
                 text: '<br>' + data['station_name'] + '<br>' +
                     data['catchment_name'] + '<br>' +
                     Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', data['p_starting']) + ' &Rarr; ' +
-                    Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', data['p_ending'])
+                    Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', data['p_ending']) + '<br>' +
+                    data['river_name']
             },
 
             exporting: {

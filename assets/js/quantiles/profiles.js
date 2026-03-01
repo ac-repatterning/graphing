@@ -107,7 +107,7 @@ function generateChart(fileNameKey) {
 
                 zoomType: 'xy',
                 inverted: true,
-                height: 365,
+                height: 465,
                 width: 495
             },
 
@@ -142,7 +142,9 @@ function generateChart(fileNameKey) {
                     '<b>SPANNING</b>: ' +
                     Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', data['p_starting']) + ' &Rarr; ' +
                     Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', data['p_ending']) + '<br>' +
-                    '<b>RIVER/WATER</b>: ' + data['river_name']
+                    '<b>RIVER/WATER</b>: ' + data['river_name'] + '<br><br>' +
+                    'THUS FAR<br>' +
+                    'minimum: ' + data['minimum'] + ' [rec. ' + Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', data['t_minimum']) + ']'
             },
 
             exporting: {

@@ -137,12 +137,12 @@ function generateChart(fileNameKey) {
                 style: {
                     fontSize: '0.95em'
                 },
-                text: '<br>STATION: ' + data['station_name'] + '<br>' +
-                    'CATCHMENT: ' + data['catchment_name'] + '<br>' +
-                    'SPANNING: ' +
+                text: '<br><b>STATION</b>: ' + data['station_name'] + '<br>' +
+                    '<b>CATCHMENT</b>: ' + data['catchment_name'] + '<br>' +
+                    '<b>SPANNING</b>: ' +
                     Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', data['p_starting']) + ' &Rarr; ' +
                     Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', data['p_ending']) + '<br>' +
-                    'RIVER/WATER: ' + data['river_name']
+                    '<b>RIVER/WATER</b>: ' + data['river_name']
             },
 
             exporting: {

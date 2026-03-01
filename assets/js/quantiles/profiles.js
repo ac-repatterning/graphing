@@ -59,26 +59,26 @@ function generateChart(fileNameKey) {
         training.push({
             x: 0,
             y: data['e_l_whisker'],
-            description: '5 percentile boundary'
+            description: 'case: $5^{th}$ percentile'
         });
 
         training.push({
             x: 0,
             y: data['minimum'],
-            description: Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', data['t_minimum'])
+            description: 'case: minimum<br>recorded: ' + Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', data['t_minimum'])
         });
 
         training.push({
             x: 0,
             y: data['maximum'],
-            description: Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', data['t_maximum'])
+            description: 'case: maximum<br>recorded: ' + Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', data['t_maximum'])
 
         });
 
         training.push({
             x: 0,
             y: data['e_u_whisker'],
-            description: '95 percentile boundary'
+            description: 'case: $95^{th}$ percentile'
 
         });
 
@@ -181,7 +181,7 @@ function generateChart(fileNameKey) {
                         symbol: 'circle'
                     },
                     tooltip: {
-                        pointFormat: 'value: {point.y:.3f}m<br/>{point.description}'
+                        pointFormat: '{point.y:.3f}m<br><br>{point.description}'
                     }
                 },
                 boxplot: {
@@ -208,7 +208,7 @@ function generateChart(fileNameKey) {
             series: [
                 {
                     type: 'scatter',
-                    name: '<b>POINT OF NOTE</b>',
+                    name: '<b>MEASUREMENT OF NOTE</b>',
                     data: training,
                     color: 'black'
                 }, {

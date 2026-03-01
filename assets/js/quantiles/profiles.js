@@ -138,6 +138,7 @@ function generateChart(fileNameKey) {
                     fontSize: '0.95em'
                 },
                 text: '<br>' + data['station_name'] + '<br>' +
+                    data['catchment_name'] + '<br>' +
                     Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', data['p_starting']) + ' &Rarr; ' +
                     Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', data['p_ending'])
             },

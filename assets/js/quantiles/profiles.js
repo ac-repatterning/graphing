@@ -144,7 +144,8 @@ function generateChart(fileNameKey) {
                     Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', data['p_ending']) + '<br>' +
                     '<b>RIVER/WATER</b>: ' + data['river_name'] + '<br><br>' +
                     'THUS FAR<br>' +
-                    'minimum: ' + data['minimum'] + ' [rec. ' + Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', data['t_minimum']) + ']'
+                    'minimum: ' + data['minimum'] + ' [rec. ' + Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', data['t_minimum']) + ']<br>' +
+                    'maximum: ' + data['maximum'] + ' [rec. ' + Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', data['t_maximum']) + ']'
             },
 
             exporting: {

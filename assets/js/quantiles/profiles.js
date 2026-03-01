@@ -187,7 +187,7 @@ function generateChart(fileNameKey) {
                 boxplot: {
                     tooltip: {
                         useHTML: true,
-                        headerFormat: '<span style="color:{point.color}">\u25CF</span> <em>Quantiles: {point.key}</em><br/>',
+                        headerFormat: '<span style="color:{point.color}">\u25CF</span> <b>QUANTILES</b><br/>',
                         pointFormat: '' +
                             'Lower Whisker $10^{th}$: {point.low:,.3f}m<br/>' +
                             'Lower Quartile: {point.q1:,.3f}m<br/>' +

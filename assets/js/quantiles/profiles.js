@@ -133,7 +133,13 @@ function generateChart(fileNameKey) {
             },
 
             caption: {
-                text: '<p>quantiles, etc.</p>'
+                useHTML: true,
+                style: {
+                    fontSize: '0.95em'
+                },
+                text: '<br>' + data['station_name'] + '<br>' +
+                    Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', data['p_starting']) + ' &Rarr; ' +
+                    Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', data['p_ending'])
             },
 
             exporting: {
@@ -177,13 +183,14 @@ function generateChart(fileNameKey) {
                 },
                 boxplot: {
                     tooltip: {
+                        useHTML: true,
                         headerFormat: '<span style="color:{point.color}">\u25CF</span> <em>Quantiles: {point.key}</em><br/>',
                         pointFormat: '' +
-                            'Lower Whisker: {point.low:,.3f}m<br/>' +
+                            'Lower Whisker $10^{th}$: {point.low:,.3f}m<br/>' +
                             'Lower Quartile: {point.q1:,.3f}m<br/>' +
                             'Median: {point.median:,.3f}m<br/>' +
                             'Upper Quartile: {point.q3:,.3f}m<br>' +
-                            'Upper Whisker: {point.high:,.3f}m<br/>'
+                            'Upper Whisker $90^{th}$: {point.high:,.3f}m<br/>'
                     },
                     whiskerWidth: 3,
                     medianWidth: 1,

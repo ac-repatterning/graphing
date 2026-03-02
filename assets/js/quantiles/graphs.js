@@ -114,7 +114,7 @@ function generateChart(fileNameKey) {
             }],
 
             title: {
-                text: 'River Level Extrema, etc., of: ' + source['station_name']
+                text: 'River Level Extrema, etc.: ' + source['station_name']
             },
 
             subtitle: {

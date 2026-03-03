@@ -69,7 +69,7 @@ function generateChart(fileNameKey){
         Highcharts.stockChart('container0007', {
 
             rangeSelector: {
-                selected: 2,
+                selected: 4,
                 verticalAlign: 'top',
                 floating: false,
                 inputPosition: {
@@ -189,6 +189,7 @@ function generateChart(fileNameKey){
                     name: source['station_name'],
                     data: source.data,
                     color: '#1b1919',
+                    lineWidth: 1,
                     type: 'spline',
                     pointStart: source['starting'],
                     pointInterval: source['interval'],

@@ -120,14 +120,14 @@ function generateChart(fileNameKey){
                 plotLines: [
                     {
                         value: attributes['e_u_whisker'],
-                        color: 'brown',
+                        color: '#000000',
                         width: 0.85,
                         label: {
                             useHTML: true,
                             style: {
-                                color: 'brown'
+                                color: '#000000'
                             },
-                            text: '$95^{th}$ percentile<br>' + attributes['e_u_whisker'] + 'm'
+                            text: '95<sup>th</sup>  pcl.<br>' + attributes['e_u_whisker'] + 'm'
                         }
                     }
                 ]
@@ -189,7 +189,7 @@ function generateChart(fileNameKey){
                 {
                     name: source['station_name'],
                     data: source.data,
-                    color: '#1b1919',
+                    color: 'brown',
                     lineWidth: 1,
                     type: 'spline',
                     pointStart: source['starting'],

@@ -112,8 +112,7 @@ $.getJSON('/warehouse/detection/live/perspective/perspective.json', function (so
                 format: '<b><abbr title="A distinct flat line is 4 or more consecutive & equal river level values.  Each field value denotes the number of time points that the flat lines of a gauge series span.">FLAT LINES<br></abbr></b><br>'
             },
             sorting: {
-                enabled: true,
-                order: 'desc'
+                enabled: true
             }
         }, {
             id: 'gap',
@@ -122,7 +121,7 @@ $.getJSON('/warehouse/detection/live/perspective/perspective.json', function (so
                 format: '<b><abbr title="A distinct gap is 4 or more consecutive missing river level values.  Each field value denotes the number of time points that the gaps of a gauge series span.">GAPS<br></abbr></b><br>'
             },
             sorting: {
-                enabled: true
+                enabled: true,
             }
         }, {
             id: 'missing',
@@ -131,7 +130,8 @@ $.getJSON('/warehouse/detection/live/perspective/perspective.json', function (so
                 format: '<b><abbr title="If measurement is not recorded at a time point, we have a missing value.  Each field value denotes the number missing measurements per gauge series, and relative to the starting time point.">MISSING<br></abbr></b><br>'
             },
             sorting: {
-                enabled: true
+                enabled: true,
+                order: 'desc'
             }
         }, {
             id: 'p_anomaly',

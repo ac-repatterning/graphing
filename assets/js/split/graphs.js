@@ -40,6 +40,15 @@ dropdown.on('change', function (e) {
 // Generate graphs
 function generateChart(fileNameKey){
 
+
+    let attributes = [];
+
+
+    $.getJSON('/warehouse/quantiles/aggregates/aggregates.json', function (base) {
+        attributes = base[fileNameKey];
+    });
+
+
     $.getJSON('/warehouse/split/points/' + fileNameKey + '.json', function (source)  {
 
 
@@ -67,6 +76,7 @@ function generateChart(fileNameKey){
             sectors.push({
                 name: frame['periods'][i].substring(0, 4),
                 data: frame.data[i],
+                lineWidth: 1,
                 type: 'spline',
                 dataGrouping: {
                     enabled: true,
@@ -122,8 +132,8 @@ function generateChart(fileNameKey){
             chart: {
                 type: 'spline',
                 zoomType: 'xy',
-                width: 435,
-                height: 465
+                width: 465,
+                height: 485
             },
 
             title: {
@@ -167,7 +177,22 @@ function generateChart(fileNameKey){
                 lineWidth: 2,
                 resize: {
                     enabled: true
-                }
+                },
+                height: '85%',
+                plotLines: [
+                    {
+                        value: attributes['e_u_whisker'],
+                        color: '#000000',
+                        width: 0.85,
+                        label: {
+                            useHTML: true,
+                            style: {
+                                color: '#000000'
+                            },
+                            text: '$95^{th}$ percentile<br>' + attributes['e_u_whisker'] + 'm'
+                        }
+                    }
+                ]
             },
 
             xAxis: {

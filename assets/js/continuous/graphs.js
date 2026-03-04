@@ -87,8 +87,8 @@ function generateChart(fileNameKey){
             chart: {
                 type: 'spline',
                 zoomType: 'xy',
-                width: 465,
-                height: 410
+                width: 485,
+                height: 435
             },
 
             title: {
@@ -116,6 +116,7 @@ function generateChart(fileNameKey){
                 resize: {
                     enabled: true
                 },
+                height: '85%',
                 plotLines: [
                     {
                         value: attributes['e_u_whisker'],

@@ -127,7 +127,7 @@ function generateChart(fileNameKey){
                             style: {
                                 color: 'brown'
                             },
-                            text: '$95^{th}$ percentile<br>' + attributes['e_u_whisker'] + 'm'
+                            text: '95<sup>th</sup>  pcl.<br>' + attributes['e_u_whisker'] + 'm'
                         }
                     }
                 ]

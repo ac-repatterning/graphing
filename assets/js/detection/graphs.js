@@ -61,6 +61,14 @@ dropdown.on('change', function (e) {
 // Generate graphs
 function generateChart(fileNameKey) {
 
+
+    let attributes = [];
+
+    $.getJSON('/warehouse/quantiles/aggregates/aggregates.json', function (base) {
+        attributes = base[fileNameKey];
+    });
+
+
     // Relative to Amazon S3 (Simple Storage Service) Set Up
     $.getJSON('/warehouse/detection/live/points/' + fileNameKey + '.json', function (source) {
 
@@ -182,7 +190,33 @@ function generateChart(fileNameKey) {
                 lineWidth: 2,
                 resize: {
                     enabled: true
-                }
+                },
+                plotLines: [
+                    {
+                        value: attributes['e_u_whisker'],
+                        color: '#000000',
+                        width: 0.85,
+                        label: {
+                            useHTML: true,
+                            style: {
+                                color: '#000000'
+                            },
+                            text: '$95^{th}$ percentile<br>' + attributes['e_u_whisker'] + 'm'
+                        }
+                    },
+                    {
+                        value: attributes['e_l_whisker'],
+                        color: '#000000',
+                        width: 0.85,
+                        label: {
+                            useHTML: true,
+                            style: {
+                                color: '#000000'
+                            },
+                            text: '$5^{th}$ percentile<br>' + attributes['e_l_whisker'] + 'm'
+                        }
+                    }
+                ]
             }, {
                 labels: {
                     align: 'left',
@@ -271,7 +305,7 @@ function generateChart(fileNameKey) {
                     }
                 },
                 {
-                    name: 'asymptotes',
+                    name: 'asymptotes: flat lines',
                     data: asymptotes,
                     lineWidth: 0,
                     marker: {

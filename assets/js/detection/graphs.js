@@ -61,6 +61,14 @@ dropdown.on('change', function (e) {
 // Generate graphs
 function generateChart(fileNameKey) {
 
+
+    let attributes = [];
+
+    $.getJSON('/warehouse/quantiles/aggregates/aggregates.json', function (base) {
+        attributes = base[fileNameKey];
+    });
+
+
     // Relative to Amazon S3 (Simple Storage Service) Set Up
     $.getJSON('/warehouse/detection/live/points/' + fileNameKey + '.json', function (source) {
 
@@ -79,8 +87,7 @@ function generateChart(fileNameKey) {
             plausible = __sequence(source['p_anomalies'], 'original'),
             gaps = __sequence(source['gaps'], 'gap'),
             missing = __sequence(source['missing'], 'missing'),
-            asymptotes = __sequence(source['asymptotes'], 'asymptote'),
-            extremes = __sequence(source['extremes'], 'original');
+            asymptotes = __sequence(source['asymptotes'], 'asymptote');
 
 
         // Draw a graph
@@ -91,7 +98,7 @@ function generateChart(fileNameKey) {
             },
 
             rangeSelector: {
-                selected: 1,
+                selected: 0,
                 verticalAlign: 'top',
                 floating: false,
                 inputPosition: {
@@ -178,11 +185,39 @@ function generateChart(fileNameKey) {
                     text: 'series,<br>etc.',
                     x: 0
                 },
-                height: '39.5%',
+                height: '43.5%',
                 lineWidth: 2,
                 resize: {
                     enabled: true
-                }
+                },
+                plotLines: [
+                    {
+                        value: attributes['e_u_whisker'],
+                        color: '#ff9202',
+                        width: 0.85,
+                        label: {
+                            y: -6,
+                            useHTML: true,
+                            style: {
+                                color: '#ff9202'
+                            },
+                            text: '$95^{th}$ pcl. ' + attributes['e_u_whisker'] + 'm'
+                        }
+                    },
+                    {
+                        value: attributes['e_l_whisker'],
+                        color: '#6b9771',
+                        width: 0.85,
+                        label: {
+                            y: 10,
+                            useHTML: true,
+                            style: {
+                                color: '#6b9771'
+                            },
+                            text: '$5^{th}$ pcl. ' + attributes['e_l_whisker'] + 'm'
+                        }
+                    }
+                ]
             }, {
                 labels: {
                     align: 'left',
@@ -192,7 +227,7 @@ function generateChart(fileNameKey) {
                     text: 'asymptotes:<br>flat lines',
                     x: 0
                 },
-                top: '45%',
+                top: '49%',
                 height: '23.5%',
                 offset: 0,
                 lineWidth: 2,
@@ -206,8 +241,8 @@ function generateChart(fileNameKey) {
                     text: 'gaps<br>& missing',
                     x: 0
                 },
-                top: '74.0%',
-                height: '23.5%',
+                top: '78.0%',
+                height: '19.5%',
                 offset: 0,
                 lineWidth: 2,
                 min: 3
@@ -240,11 +275,12 @@ function generateChart(fileNameKey) {
                 {
                     name: 'original',
                     data: original,
+                    color: '#554d4d',
                     lineWidth: 0,
                     marker: {
                         enabled: true,
                         symbol: 'circle',
-                        radius: 1.85
+                        radius: 1.35
                     },
                     states: {
                         hover: {
@@ -271,7 +307,7 @@ function generateChart(fileNameKey) {
                     }
                 },
                 {
-                    name: 'asymptotes',
+                    name: 'asymptotes: flat lines',
                     data: asymptotes,
                     lineWidth: 0,
                     marker: {
@@ -360,30 +396,6 @@ function generateChart(fileNameKey) {
                     },
                     tooltip: {
                         pointFormat: 'An anomalous measure?<br>{point.y:,.3f}m<br/>'
-                    }
-                },
-                {
-                    name: '< 5% | > 95%',
-                    data: extremes,
-                    visible: false,
-                    lineWidth: 0,
-                    marker: {
-                        enabled: true,
-                        symbol: 'circle',
-                        radius: 1.85
-                    },
-                    states: {
-                        hover: {
-                            lineWidthPlus: 0
-                        }
-                    },
-                    color: '#A08E23',
-                    yAxis: 0,
-                    dataGrouping: {
-                        units: groupingUnits
-                    },
-                    tooltip: {
-                        pointFormat: '< <i>5pcl.</i> | > <i>95pcl.</i> threshold of this gauge.<br>{point.y:,.3f}m<br>'
                     }
                 }
             ]

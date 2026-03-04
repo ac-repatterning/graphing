@@ -137,7 +137,7 @@ $.getJSON('/warehouse/detection/live/perspective/perspective.json', function (so
             id: 'p_anomaly',
             width: 125,
             header: {
-                format: '<b><abbr title="Due to the difference between the expected value, vis-à-vis model, and the real value; missing value points are skipped.">PLAUSIBLE<br>ANOMALIES</abbr></b>'
+                format: '<b><abbr title="The # of plausible anomalies - within the graph time span - due to the difference between the expected value, vis-à-vis model, and the real value; missing value points are skipped.">ANOMALIES<br>PREDICTIONS</abbr></b>'
             },
             sorting: {
                 enabled: true

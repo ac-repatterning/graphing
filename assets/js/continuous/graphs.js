@@ -87,7 +87,7 @@ function generateChart(fileNameKey){
             chart: {
                 type: 'spline',
                 zoomType: 'xy',
-                width: 485,
+                width: 465,
                 height: 435
             },
 

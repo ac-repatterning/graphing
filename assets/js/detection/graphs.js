@@ -376,7 +376,7 @@ function generateChart(fileNameKey) {
                     }
                 },
                 {
-                    name: 'plausible anomalies',
+                    name: 'plausible anomalies predictions',
                     data: plausible,
                     lineWidth: 0,
                     marker: {

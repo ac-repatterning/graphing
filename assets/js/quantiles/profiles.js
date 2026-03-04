@@ -200,7 +200,7 @@ function generateChart(fileNameKey) {
                     },
                     whiskerWidth: 3,
                     medianWidth: 1,
-                    pointWidth: 6,
+                    pointWidth: 13,
                     medianColor: '#000000',
                     stemColor: '#000000',
                     whiskerColor: '#000000'

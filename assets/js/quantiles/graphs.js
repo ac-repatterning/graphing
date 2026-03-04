@@ -39,6 +39,15 @@ dropdown.on('change', function (e) {
 // Generate graphs
 function generateChart(fileNameKey) {
 
+
+    let attributes = [];
+
+
+    $.getJSON('/warehouse/quantiles/aggregates/aggregates.json', function (base) {
+        attributes = base[fileNameKey];
+    });
+
+
     // Relative to Amazon S3 (Simple Storage Service) Set Up
     $.getJSON('/warehouse/quantiles/points/' + fileNameKey + '.json', function (source) {
 
@@ -84,7 +93,7 @@ function generateChart(fileNameKey) {
         Highcharts.stockChart('container0003', {
 
             rangeSelector: {
-                selected: 1,
+                selected: 0,
                 verticalAlign: 'top',
                 floating: false,
                 inputPosition: {
@@ -101,8 +110,8 @@ function generateChart(fileNameKey) {
 
             chart: {
                 zoomType: 'xy',
-                width: 485,
-                height: 450
+                width: 535,
+                height: 485
             },
 
             colorAxis: [{
@@ -175,11 +184,39 @@ function generateChart(fileNameKey) {
                     text: 'extrema<br>(metres)',
                     x: 0
                 },
-                height: '65%',
+                height: '69%',
                 lineWidth: 2,
                 resize: {
                     enabled: true
-                }
+                },
+                plotLines: [
+                    {
+                        value: attributes['e_u_whisker'],
+                        color: '#ff9202',
+                        width: 0.85,
+                        label: {
+                            y: -6,
+                            useHTML: true,
+                            style: {
+                                color: '#ff9202'
+                            },
+                            text: '$95^{th}$ pcl. ' + attributes['e_u_whisker'] + 'm'
+                        }
+                    },
+                    {
+                        value: attributes['e_l_whisker'],
+                        color: '#6b9771',
+                        width: 0.85,
+                        label: {
+                            y: 10,
+                            useHTML: true,
+                            style: {
+                                color: '#6b9771'
+                            },
+                            text: '$5^{th}$ pcl. ' + attributes['e_l_whisker'] + 'm'
+                        }
+                    }
+                ]
             }, {
                 labels: {
                     align: 'left',
@@ -189,8 +226,8 @@ function generateChart(fileNameKey) {
                     text: 'median<br>(metres)',
                     x: 0
                 },
-                top: '67.5%',
-                height: '31%',
+                top: '72.5%',
+                height: '26%',
                 offset: 0,
                 lineWidth: 2
             }

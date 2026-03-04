@@ -201,7 +201,7 @@ function generateChart(fileNameKey) {
                             style: {
                                 color: '#ff9202'
                             },
-                            text: '$95^{th}$ pcl. ' + attributes['e_u_whisker'] + 'm'
+                            text: '95<sup>th</sup> pcl. ' + attributes['e_u_whisker'] + 'm'
                         }
                     },
                     {
@@ -214,7 +214,7 @@ function generateChart(fileNameKey) {
                             style: {
                                 color: '#6b9771'
                             },
-                            text: '$5^{th}$ pcl. ' + attributes['e_l_whisker'] + 'm'
+                            text: '5<sup>th</sup> pcl. ' + attributes['e_l_whisker'] + 'm'
                         }
                     }
                 ]

@@ -88,7 +88,7 @@ function generateChart(fileNameKey){
                 type: 'spline',
                 zoomType: 'xy',
                 width: 465,
-                height: 435
+                height: 485
             },
 
             title: {
@@ -155,8 +155,10 @@ function generateChart(fileNameKey){
             },
 
             caption: {
-                text: '<p>A gauge\'s river level measures;  ' +
-                    'metres.</p>'
+                margin: 25,
+                text: '<p><div style="font-size: 12px;">A gauge\'s river level measures;  metres.  Each graph point is an Ordnance Datum river level. An ' +
+                    'ordance datum river level is the sum of (a) a river level relative to a gauge datum, and (b) the gauge ' +
+                    'datum of the gauge site. SEPA publishes river levels relative to a gauge datum.metres.</div></p>'
             },
 
             exporting: {

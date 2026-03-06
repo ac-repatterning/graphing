@@ -17,7 +17,6 @@ $.getJSON('/warehouse/detection/live/perspective/perspective.json', function (so
         gap: [],
         missing: [],
         asymptote: [],
-        extreme: [],
         catchment: []
     };
 
@@ -25,7 +24,6 @@ $.getJSON('/warehouse/detection/live/perspective/perspective.json', function (so
     let i_p_anomaly = indices.indexOf('p_anomaly'),
         i_gap = indices.indexOf('gap'),
         i_asymptote = indices.indexOf('asymptote'),
-        i_extreme = indices.indexOf('extreme'),
         i_missing = indices.indexOf('missing'),
         i_station = indices.indexOf('station_name'),
         i_catchment = indices.indexOf('catchment_name'),
@@ -47,7 +45,6 @@ $.getJSON('/warehouse/detection/live/perspective/perspective.json', function (so
         columns.gap.push(source['data'][i][i_gap]);
         columns.missing.push(source['data'][i][i_missing]);
         columns.asymptote.push(source['data'][i][i_asymptote]);
-        columns.extreme.push(source['data'][i][i_extreme]);
         columns.catchment.push(source['data'][i][i_catchment]);
 
         // columns.starting.push( Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', source['data'][i][i_starting]) );
@@ -138,15 +135,6 @@ $.getJSON('/warehouse/detection/live/perspective/perspective.json', function (so
             width: 125,
             header: {
                 format: '<b><abbr title="The # of plausible anomalies - within the graph time span - due to the difference between the expected value, vis-à-vis model, and the real value; missing value points are skipped.">ANOMALIES<br>PREDICTIONS</abbr></b>'
-            },
-            sorting: {
-                enabled: true
-            }
-        }, {
-            id: 'extreme',
-            width: 135,
-            header: {
-                format: '<b><abbr title="The # of points below the 5 percentile, or above the 95 percentile, of river level values across time.">THRESHOLDS<br></abbr></b><br>'
             },
             sorting: {
                 enabled: true

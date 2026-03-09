@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+
+<!--suppress JSUnresolvedLibraryURL -->
+<html lang="en" >
+
+<head>
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+  <meta name="description" content="" />
+
+  <link rel="icon" type="image/x-icon" href="/assets/img/favicon/automata.png" />
+  <link rel="stylesheet" href="/assets/css/libraries/core.css" class="template-customizer-core-css" />
+  <link rel="stylesheet" href="/assets/css/generic.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" />
+  <link rel="stylesheet" href="/assets/css/libraries/selecting.css" />
+
+  <script src="/assets/js/_libraries/latex.js" async></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+          integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+
+  <title>Times</title>
+
+</head>
+
+<body>
+
+<div class="grid-container">
+
+  <div class="grid-item"></div>
+  <div class="grid-item">
+
+    <table style="width: 500px; margin-left: 0; margin-right: auto; margin-top: 5px;">
+      <colgroup>
+        <col span="1" style="width: 100%;">
+      </colgroup>
+      <tr>
+        <td>
+            <p id="state" style="color: #696cff">
+              <script>$.getJSON("/warehouse/signals/_times.json", function (data){
+                  let cells = "",
+                      elements = document.getElementById('state');
+                  if (data['testing']) {
+                      cells = "<h4 style='font-variant: small-caps'>Latest Test</h4>";
+                  } else {
+                      cells = "<h4 style='font-variant: small-caps'>Latest/Most Recent Warning Period</h4>";
+                  }
+                  elements.innerHTML = cells;
+              });
+              </script>
+            </p>
+            <p id="dates" style="color: #696cff">
+              <script>$.getJSON("/warehouse/signals/_times.json", function (data){
+                  let cells = "",
+                      elements = document.getElementById('dates');
+                  cells = data['starting'] + " &Rarr; " + data['ending'];
+                  elements.innerHTML = cells;
+              });
+              </script>
+            </p>
+            <p>Outwith warning periods, random test runs might occur; the title automatically updates accordingly.</p>
+
+        </td>
+      </tr>
+    </table>
+
+  </div>
+
+  <div class="grid-item"></div>
+  <div class="grid-item"></div>
+
+  <div class="grid-item"></div>
+  <div class="grid-item"></div>
+
+</div>
+
+
+</body>
+
+</html>

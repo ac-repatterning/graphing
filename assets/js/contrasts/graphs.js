@@ -117,6 +117,7 @@ function generateChart(fileNameKey){
                 type: 'spline',
                 zoomType: 'xy',
                 width: 615,
+                height: 535,
                 marginRight: 265
             },
 
@@ -194,6 +195,14 @@ function generateChart(fileNameKey){
                 title: {
 
                 }
+            },
+
+            caption: {
+                margin: 35,
+                text: '<p><div style="font-size: 12px;">A graph for comparing / contrasting the river level percentage changes vis-à-vis ' +
+                    'the gauge station measures of a catchment.<br><br>' +
+                    'To enable or disable a gauge station\'s series, click on the corresponding legend. Each tooltip displays <b>percentage ' +
+                    'change | gauge station name | the name of the river/water where the gauge station is located.</b></div></p>'
             },
 
             exporting: {

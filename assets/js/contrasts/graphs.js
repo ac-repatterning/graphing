@@ -121,11 +121,13 @@ function generateChart(fileNameKey){
             },
 
             title: {
-                text: '% Change'
+                text: '% Change',
+                x: -65
             },
 
             subtitle: {
-                text: 'Catchment: <b>' + optionSelected + '</b>'
+                text: 'Catchment: <b>' + optionSelected + '</b>',
+                x: -65
             },
 
             credits: {

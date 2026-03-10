@@ -120,14 +120,28 @@ function generateChart(fileNameKey){
                 plotLines: [
                     {
                         value: attributes['e_u_whisker'],
-                        color: '#000000',
+                        color: '#ff9202',
                         width: 0.85,
                         label: {
+                            y: -6,
                             useHTML: true,
                             style: {
-                                color: '#000000'
+                                color: '#ff9202'
                             },
-                            text: '95<sup>th</sup>  pcl.<br>' + attributes['e_u_whisker'] + 'm'
+                            text: '95<sup>th</sup> pcl. ' + attributes['e_u_whisker'] + 'm'
+                        }
+                    },
+                    {
+                        value: attributes['e_l_whisker'],
+                        color: '#6b9771',
+                        width: 0.85,
+                        label: {
+                            y: 10,
+                            useHTML: true,
+                            style: {
+                                color: '#6b9771'
+                            },
+                            text: '5<sup>th</sup> pcl. ' + attributes['e_l_whisker'] + 'm'
                         }
                     }
                 ]

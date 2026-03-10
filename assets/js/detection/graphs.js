@@ -275,7 +275,6 @@ function generateChart(fileNameKey) {
                 {
                     name: 'original',
                     data: original,
-                    color: '#554d4d',
                     lineWidth: 0,
                     marker: {
                         enabled: true,
@@ -381,8 +380,8 @@ function generateChart(fileNameKey) {
                     lineWidth: 0,
                     marker: {
                         enabled: true,
-                        symbol: 'circle',
-                        radius: 2.25
+                        symbol: 'square',
+                        radius: 2.85
                     },
                     states: {
                         hover: {

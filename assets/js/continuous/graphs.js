@@ -194,8 +194,6 @@ function generateChart(fileNameKey){
                     color: 'brown',
                     lineWidth: 1,
                     type: 'spline',
-                    pointStart: source['starting'],
-                    pointInterval: source['interval'],
                     turboThreshold: 4000,
                     dataGrouping: {
                         enabled: true,

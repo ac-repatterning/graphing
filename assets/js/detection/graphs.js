@@ -98,7 +98,7 @@ function generateChart(fileNameKey) {
             },
 
             rangeSelector: {
-                selected: 0,
+                selected: 5,
                 verticalAlign: 'top',
                 floating: false,
                 inputPosition: {
